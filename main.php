@@ -34,7 +34,7 @@
       });
 
       // Try HTML5 geolocation.
-      $.snackbar({content: "Wait for current location..."});
+      $.snackbar({content: "wait for GPS signal..."});
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
 
