@@ -35,6 +35,8 @@
     </div>
 
   </div>
+
+  <!--  nev bar -->
   <?php include "nev_bar.php" ?>
 </body>
 </html>

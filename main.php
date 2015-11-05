@@ -58,6 +58,8 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVsqkcMi6fsDdKO7_7MSXYZra09vK3qrM&callback=initMap">
   </script>
+
+  <!--  nev bar -->
   <?php include "nev_bar.php" ?>
 </body>
 </html>
