@@ -15,7 +15,8 @@
   </script>
 
   <style type="text/css">
-    html, body { height: 100%; margin: 0; padding: 0; }
+    html { height: 100%; margin: 0; padding: 0; }
+    body { height: 100%; margin: 0; }
     #map { height: 100%; }
   </style>
 
@@ -31,6 +32,26 @@
         center: {lat: -34.397, lng: 150.644},
         zoom: 8
       });
+
+      // Try HTML5 geolocation.
+      $.snackbar({content: "Wait for current location..."});
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          $.snackbar({content: "Location found."});
+          map.setCenter(pos);
+        }, function() {
+          alert('Error: The Geolocation service failed.');
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        alert('Error: Your browser doesn\'t support geolocation.');
+      }
     }
 
   </script>

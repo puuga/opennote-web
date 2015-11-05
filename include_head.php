@@ -33,6 +33,10 @@
 <script src="js/ripples.min.js"></script>
 <script src="js/material.min.js"></script>
 
+<!--  snackbar -->
+<link href="css/snackbar.min.css" rel="stylesheet">
+<script src="js/snackbar.min.js"></script>
+
 <!-- local script -->
 <!-- <script src="js/jquery.validate.min.js"></script>
 <script src="js/additional-methods.min.js"></script> -->

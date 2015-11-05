@@ -17,7 +17,7 @@
       </p>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Map</a></li>
+        <li><a href="main.php">Map</a></li>
         <li><a href="#">234</a></li>
         <li><a href="#">345</a></li>
         <li><a href="#">456</a></li>
