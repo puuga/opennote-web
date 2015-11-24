@@ -4,7 +4,7 @@
 <html lang="th">
 <head>
   <?php include "include_head.php" ?>
-  <title>Home</title>
+  <title>Map View</title>
 
   <script>
     $(document).ready(function() {
