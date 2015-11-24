@@ -27,14 +27,32 @@
     <div class="row">
 
       <div class="col-lg-4">
-        <div class="panel panel-info">
           <div class="panel-body">
-            <p class="text-center">
-              <img src="<?php echo getFacebookProfilePictureUrl(10207817507176671); ?>"
-                class="img-responsive" alt="Responsive image">
-            </p>
-            <h3 class="panel-title">Siwawes Wongcharoen</h3>
-          </div>
+            <div class="thumbnail">
+      	      <img src="<?php echo getFacebookProfilePictureUrl(10207817507176671); ?>"
+                class="img-responsive img-circle" alt="Siwawes Wongcharoen">
+      	      <div class="caption">
+      	        <h3 class="text-center">Siwawes Wongcharoen</h3>
+      	        <p>
+      						<dl class="text-center">
+      							<dt>Contact Address</dt>
+      							<dd>
+      								Department of Computer Science and Information Tecnology,
+      								Faculty of Science, Naresuan Univesity, Phitsanulok, Thailand
+      							</dd>
+      						</dl>
+
+      						<dl class="text-center">
+      							<dt>Email</dt>
+      							<dd>
+      								<a href="mailto:siwawesw55@email.nu.ac.th">
+                        siwawesw55@email.nu.ac.th
+                      </a>
+      							</dd>
+      						</dl>
+      					</p>
+      	      </div>
+      	    </div>
         </div>
       </div>
 
