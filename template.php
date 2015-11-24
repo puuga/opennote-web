@@ -15,6 +15,7 @@
   </script>
 </head>
 <body>
+  <?php include_once("include/analyticstracking.php") ?>
   <div class="container">
     <h1>Hello Bootstrap</h1>
 

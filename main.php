@@ -22,6 +22,7 @@
 
 </head>
 <body>
+  <?php include_once("include/analyticstracking.php") ?>
   <div id="map"></div>
 
   <script type="text/javascript">
