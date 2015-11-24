@@ -4,17 +4,17 @@
 
 <!-- SEO -->
 <!-- General -->
-<meta name="description" content="<?php echo $title; ?>">
+<meta name="description" content="open.note">
 <link rel='author' href='https://plus.google.com/u/0/+SiwawesWongcharoen'/>
 <!-- Facebook Open Graph-->
-<meta property='og:title' content='<?php echo $title; ?>'/>
+<meta property='og:title' content='open.note'/>
 <meta property='og:type' content='website'/>
-<meta property='og:description' content='<?php echo $title; ?>'/>
+<meta property='og:description' content='open.note'/>
 
 <!-- Twitter -->
 <meta name='twitter:card' content='summary'>
-<meta name='twitter:title' content='<?php echo $title; ?>'>
-<meta name='twitter:description' content='<?php echo $title; ?>'>
+<meta name='twitter:title' content='open.note'>
+<meta name='twitter:description' content='open.note'>
 
 
 <!-- Latest compiled and minified CSS -->
