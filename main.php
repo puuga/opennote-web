@@ -106,6 +106,8 @@
 
       btnTempUI.addEventListener('click', function() {
         clearMap();
+
+        getAllMessages();
       });
     }
 
@@ -156,6 +158,7 @@
     }
 
     var map;
+    var heatMap;
     var buffer;
     var origin;
     function initMap() {
@@ -249,13 +252,47 @@
         markers[i].setMap(null);
       }
     }
-    function clearHeatMap() {
 
+    function clearHeatMap() {
+      if (typeof(heatmap)==="undefined") {
+        return;
+      }
+
+      heatmap.setMap(null);
+    }
+
+    function drawHeatMap(messages) {
+      var points = [];
+      for (var i in messages) {
+        points.push(new google.maps.LatLng(messages[i].lat, messages[i].lng));
+      }
+
+      heatmap = new google.maps.visualization.HeatmapLayer({
+        data: points,
+        map: map
+      });
+    }
+
+    function getAllMessages() {
+      $.support.cors = true;
+      $.ajax({
+        url: "http://128.199.208.34/open.note/messages.php",
+        dataType: "json"
+      })
+      .done(function(data) {
+        console.log( "success" );
+        console.log(data);
+        drawHeatMap(data);
+      })
+      .fail(function(data) {
+        console.log( "error" );
+        console.log(data);
+      });
     }
 
   </script>
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVsqkcMi6fsDdKO7_7MSXYZra09vK3qrM&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVsqkcMi6fsDdKO7_7MSXYZra09vK3qrM&libraries=visualization&callback=initMap">
   </script>
 
   <!--  nev bar -->
