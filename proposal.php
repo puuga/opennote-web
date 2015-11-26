@@ -22,17 +22,69 @@
     }
   ?>
   <div class="container">
-    <h1>Proposal</h1>
+    <div class="col-lg-10 col-lg-offset-1">
+      <h1>Proposal</h1>
+      <h2><?php echo $project_name; ?> for <?php echo $android; ?></h2>
+    </div>
 
     <div class="row">
 
       <div class="col-lg-10 col-lg-offset-1">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">Panel info</h3>
+            <h3 class="panel-title"><?php echo $objective; ?></h3>
           </div>
           <div class="panel-body">
-            Panel content
+            <p>
+              <?php echo $objective_1; ?>
+            </p>
+            <p>
+              <?php echo $objective_2; ?>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-10 col-lg-offset-1">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $idea; ?></h3>
+          </div>
+          <div class="panel-body">
+            <?php echo $idea_text; ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-10 col-lg-offset-1">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $desc; ?></h3>
+          </div>
+          <div class="panel-body">
+            <?php echo $desc_text; ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-10 col-lg-offset-1">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $highlights; ?></h3>
+          </div>
+          <div class="panel-body">
+            <?php echo $highlights_text; ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-10 col-lg-offset-1">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $benefit; ?></h3>
+          </div>
+          <div class="panel-body">
+            <?php echo $benefit_text; ?>
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@
       <div class="col-lg-4">
         <div class="panel-body">
           <div class="thumbnail">
-    	      <img src="<?php echo getFacebookProfilePictureUrl(10153796098699558); ?>"
+    	      <img src="<?php echo getFacebookProfilePictureUrl(439431556255704); ?>"
               class="img-responsive img-circle" alt="Nopphawit Punbua">
     	      <div class="caption">
     	        <h3 class="text-center">Nopphawit Punbua</h3>
