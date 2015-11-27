@@ -18,18 +18,18 @@
     html { height: 100%; margin: 0; padding: 0; }
     body { height: 100%; margin: 0; }
     #map { height: 100%; }
-    #btnBufferUI, #btnTempUI {
+    #btnBufferUI, #btnHeatUI, #btnAllMessagesUI {
       background-color: #fff;
       border: 2px solid #fff;
       border-radius: 3px;
       box-shadow: 0 2px 6px rgba(0,0,0,.3);
       cursor: pointer;
-      float: left;
+      /*float: left;*/
       margin: 8px;
       text-align: center;
-      width: 100px;
+      width: 120px;
     }
-    #btnBufferText, #btnTempText {
+    #btnBufferText, #btnHeatText, #btnAllMessagesText {
       color: rgb(25,25,25);
       font-family: Roboto,Arial,sans-serif;
       font-size: 15px;
@@ -50,6 +50,11 @@
   <script type="text/javascript">
     var markers = [];
 
+    var options = {};
+    options.buffer = "buffer";
+    options.heatMap = "heatMap";
+    options.allMessages = "allMessages";
+
     function loadMessages(lat,lng){
       $.support.cors = true;
       $.ajax({
@@ -60,6 +65,7 @@
         console.log( "success" );
         console.log(data);
         makeMarker(data);
+
       })
       .fail(function(data) {
         console.log( "error" );
@@ -74,7 +80,7 @@
 
       var btnBufferUI = document.createElement('div');
       btnBufferUI.id = 'btnBufferUI';
-      btnBufferUI.title = 'Active/Deactivate Temperature';
+      btnBufferUI.title = 'Active/Deactivate Buffer';
       controlDiv.appendChild(btnBufferUI);
 
       var btnBufferText = document.createElement('div');
@@ -82,17 +88,25 @@
       btnBufferText.innerHTML = 'Buffer';
       btnBufferUI.appendChild(btnBufferText);
 
-      var btnTempUI = document.createElement('div');
-      btnTempUI.id = 'btnTempUI';
-      btnTempUI.title = 'Active/Deactivate Heat Map';
-      controlDiv.appendChild(btnTempUI);
+      var btnHeatUI = document.createElement('div');
+      btnHeatUI.id = 'btnHeatUI';
+      btnHeatUI.title = 'Active/Deactivate Heat Map';
+      controlDiv.appendChild(btnHeatUI);
 
-      var btnTempText = document.createElement('div');
-      btnTempText.id = 'btnTempText';
-      btnTempText.innerHTML = 'Heat Map';
-      btnTempUI.appendChild(btnTempText);
+      var btnHeatText = document.createElement('div');
+      btnHeatText.id = 'btnHeatText';
+      btnHeatText.innerHTML = 'Heat Map';
+      btnHeatUI.appendChild(btnHeatText);
 
-      console.log(btnTempText);
+      var btnAllMessagesUI = document.createElement('div');
+      btnAllMessagesUI.id = 'btnAllMessagesUI';
+      btnAllMessagesUI.title = 'Active/Deactivate All Messages';
+      controlDiv.appendChild(btnAllMessagesUI);
+
+      var btnAllMessagesText = document.createElement('div');
+      btnAllMessagesText.id = 'btnAllMessagesText';
+      btnAllMessagesText.innerHTML = 'All Messages';
+      btnAllMessagesUI.appendChild(btnAllMessagesText);
 
       btnBufferUI.addEventListener('click', function() {
         clearMap();
@@ -104,16 +118,21 @@
 
       });
 
-      btnTempUI.addEventListener('click', function() {
+      btnHeatUI.addEventListener('click', function() {
         clearMap();
+        getAllMessages(options.heatMap);
+      });
 
-        getAllMessages();
+      btnAllMessagesUI.addEventListener('click', function() {
+        clearMap();
+        getAllMessages(options.allMessages);
       });
     }
 
     function clearMap(){
       clearBufferMap();
       clearHeatMap();
+      clearMarker();
       google.maps.event.clearInstanceListeners(map);
     }
 
@@ -148,10 +167,9 @@
       return '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">'+ data.user.name +'</h1>'+
+        '<h3 id="firstHeading" class="firstHeading">'+ data.user.name +'</h3>'+
         '<div id="bodyContent">'+
-        '<p><b>'+ data.message +'</b> ' +
-        '</p>'+
+        '<p><strong>'+ data.message +'</strong></p>'+
         '<p>'+ data.created_at +'</p>'
         '</div>'+
         '</div>';
@@ -161,19 +179,19 @@
     var heatMap;
     var buffer;
     var origin;
+
     function initMap() {
       drawMap();
       drawControl();
     }
 
-    function drawControl(){
-
+    function drawControl() {
       var centerControlDiv = document.createElement('div');
       var centerControl = new CenterControl(centerControlDiv, map);
 
       centerControlDiv.index = 1;
-      centerControlDiv.style['padding-top'] = '20px';
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+      centerControlDiv.style['padding-top'] = '5px';
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
     }
 
     function drawMap() {
@@ -247,7 +265,10 @@
         return;
       }
       buffer.setMap(null);
+      clearMarker();
+    }
 
+    function clearMarker() {
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
@@ -273,7 +294,7 @@
       });
     }
 
-    function getAllMessages() {
+    function getAllMessages(option) {
       $.support.cors = true;
       $.ajax({
         url: "http://128.199.208.34/open.note/messages.php",
@@ -282,13 +303,19 @@
       .done(function(data) {
         console.log( "success" );
         console.log(data);
-        drawHeatMap(data);
+        if (option === options.heatMap) {
+          drawHeatMap(data);
+        } else if (option === options.allMessages) {
+          makeMarker(data);
+        }
       })
       .fail(function(data) {
         console.log( "error" );
         console.log(data);
       });
     }
+
+
 
   </script>
   <script async defer
