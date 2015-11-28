@@ -143,10 +143,12 @@
           maxWidth: 200
         });
         var myLatLng = {lat: Number(data[x].lat), lng: Number(data[x].lng)}
+        var ic_note = 'images/icon40.png';
         var marker = new google.maps.Marker({
           position : myLatLng,
           map: map,
           title: data[x].message,
+          icon: ic_note,
           zIndex: Number(data[x].distance_from_my_location)
         });
 
