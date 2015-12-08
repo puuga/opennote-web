@@ -109,7 +109,7 @@
       btnAllMessagesUI.appendChild(btnAllMessagesText);
 
       btnBufferUI.addEventListener('click', function() {
-        clearMap();
+        // clearMap();
         getCurrentLocation();
 
         map.addListener('click', function(e) {
@@ -119,12 +119,12 @@
       });
 
       btnHeatUI.addEventListener('click', function() {
-        clearMap();
+        // clearMap();
         getAllMessages(options.heatMap);
       });
 
       btnAllMessagesUI.addEventListener('click', function() {
-        clearMap();
+        // clearMap();
         getAllMessages(options.allMessages);
       });
     }
@@ -215,6 +215,7 @@
             lng: position.coords.longitude
           };
 
+          clearMap();
           drawBuffer(50000, pos);
 
           $.snackbar({content: "Location found."});
@@ -305,6 +306,7 @@
       .done(function(data) {
         console.log( "success" );
         console.log(data);
+        clearMap();
         if (option === options.heatMap) {
           drawHeatMap(data);
         } else if (option === options.allMessages) {
